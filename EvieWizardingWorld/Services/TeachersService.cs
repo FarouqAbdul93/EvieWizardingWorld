@@ -20,6 +20,11 @@ namespace EvieWizardingWorld.Services
         {
             return _teachersModel.AddTeacher(newTeacher);
         }
+
+        public bool DeleteTeacher(int id)
+        {
+            return _teachersModel.DeleteTeacher(id);
+        }
     }
 }
     

@@ -44,6 +44,24 @@ namespace EvieWizardingWorld.Controllers
             var teacher = _teachersService.AddTeacher(newTeacher);
             return CreatedAtAction(nameof(GetTeacherById), new { id = teacher.Id }, teacher);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteTeacher(int id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest("Id must be a positive number.");
+            }
+
+            bool deleted = _teachersService.DeleteTeacher(id);
+
+            if (!deleted)
+            {
+                return NotFound($"No teacher found with Id {id}.");
+            }
+
+            return NoContent();
+        }
     }
 }
     

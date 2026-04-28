@@ -28,5 +28,19 @@ namespace EvieWizardingWorld.Models
             Teacher teacher = teachers.FirstOrDefault(t => t.Id == id);
             return teacher;
         }
+
+        public bool DeleteTeacher(int id)
+        {
+            List<Teacher> teachers = FetchAllTeachers();
+            Teacher teacher = teachers.FirstOrDefault(t => t.Id == id);
+
+            if (teacher == null)
+            {
+                return false;
+            }
+
+            teachers.Remove(teacher);
+            return true;
+        }
     }
 }
