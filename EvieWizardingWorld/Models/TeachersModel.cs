@@ -13,6 +13,15 @@ namespace EvieWizardingWorld.Models
             return teachers;
         }
 
+        public Teacher AddTeacher(Teacher newTeacher)
+        {
+            List<Teacher> teachers = FetchAllTeachers();
+            int newId = teachers.Max(t => t.Id) + 1;
+            newTeacher.Id = newId;
+            teachers.Add(newTeacher);
+            return newTeacher;
+        }
+
         public Teacher FetchTeacherById(int id)
         {
             List<Teacher> teachers = FetchAllTeachers();

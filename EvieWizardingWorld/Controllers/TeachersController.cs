@@ -32,6 +32,18 @@ namespace EvieWizardingWorld.Controllers
 
             return Ok(teacher);
         }
+
+        [HttpPost]
+        public IActionResult AddTeacher([FromBody] Teacher newTeacher)
+        {
+            if (string.IsNullOrEmpty(newTeacher.Name))
+            {
+                return BadRequest("Teacher must have a name.");
+            }
+
+            var teacher = _teachersService.AddTeacher(newTeacher);
+            return CreatedAtAction(nameof(GetTeacherById), new { id = teacher.Id }, teacher);
+        }
     }
 }
     

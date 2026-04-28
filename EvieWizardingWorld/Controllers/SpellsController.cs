@@ -1,6 +1,7 @@
 ﻿using EvieWizardingWorld.Models;
 using EvieWizardingWorld.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace EvieWizardingWorld.Controllers
 {
@@ -20,6 +21,14 @@ namespace EvieWizardingWorld.Controllers
         {
             var spells = _spellsService.GetAllSpells();
             return Ok(spells);
+        }
+
+        [HttpGet("random")]
+        [EnableRateLimiting("fixed")]
+        public IActionResult GetRandomSpell()
+        {
+            var spell = _spellsService.GetRandomSpell();
+            return Ok(spell);
         }
     }
 }

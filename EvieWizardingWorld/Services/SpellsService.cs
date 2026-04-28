@@ -15,5 +15,10 @@ namespace EvieWizardingWorld.Services
         {
             return _spellsModel.FetchAllSpells();
         }
+
+        public Spell GetRandomSpell()
+        {
+            return _spellsModel.FetchRandomSpell();
+        }
     }
 }

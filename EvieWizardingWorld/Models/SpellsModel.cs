@@ -13,5 +13,13 @@ namespace EvieWizardingWorld.Models
             List<Spell> spells = JsonSerializer.Deserialize<List<Spell>>(jsonText, options);
             return spells;
         }
+
+        public Spell FetchRandomSpell()
+        {
+            List<Spell> spells = FetchAllSpells();
+            Random random = new Random();
+            int index = random.Next(0, spells.Count);
+            return spells[index];
+        }
     }
 }

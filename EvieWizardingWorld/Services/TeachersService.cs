@@ -15,6 +15,11 @@ namespace EvieWizardingWorld.Services
         {
             return _teachersModel.FetchTeacherById(id);
         }
+
+        public Teacher AddTeacher(Teacher newTeacher)
+        {
+            return _teachersModel.AddTeacher(newTeacher);
+        }
     }
 }
     
