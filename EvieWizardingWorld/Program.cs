@@ -1,8 +1,8 @@
 using EvieWizardingWorld.Models;
 using EvieWizardingWorld.Services;
 using Microsoft.AspNetCore.Mvc;
-
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using EvieWizardingWorld;
 
 namespace EvieWizardingWorld
 {
@@ -15,6 +15,8 @@ namespace EvieWizardingWorld
             builder.Services.AddControllers();
             builder.Services.AddScoped<SpellsService>();
             builder.Services.AddScoped<SpellsModel>();
+            builder.Services.AddScoped<TeachersService>();
+            builder.Services.AddScoped<TeachersModel>();
             builder.Services.AddHealthChecks()
                 .AddCheck<TeacherHealthCheck>("teacher_file_health_check",
                 failureStatus: HealthStatus.Unhealthy,
