@@ -1,3 +1,5 @@
+using EvieWizardingWorld.Models;
+using EvieWizardingWorld.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EvieWizardingWorld
@@ -9,7 +11,8 @@ namespace EvieWizardingWorld
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllers();
-
+            builder.Services.AddScoped<SpellsService>();
+            builder.Services.AddScoped<SpellsModel>();
             var app = builder.Build();
 
             app.UseRouting();
